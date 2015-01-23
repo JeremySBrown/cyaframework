@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.8.1.0\lib\net45\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -50,7 +53,24 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="EntityTests\EntityGenericIdTests.cs" />
+    <Compile Include="Fakes\EntityWithIdOfGuid.cs" />
+    <Compile Include="Fakes\EntityWithIdOfInt.cs" />
+    <Compile Include="Fakes\EntityWithIdOfString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WhenUsingIModelBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cyaFramework.Domain\cyaFramework.Domain.csproj">
+      <Project>{ed592aa3-33fd-4285-8f00-6b239f679657}</Project>
+      <Name>cyaFramework.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Stubs\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
