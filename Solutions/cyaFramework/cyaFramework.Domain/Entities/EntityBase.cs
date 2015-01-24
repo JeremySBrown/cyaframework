@@ -83,13 +83,5 @@ namespace cyaFramework.Domain.Entities
 
             return this.Id.Equals(other.Id);
         }
-
-        //internal bool CompareTransientIds(TId thisId, TId otherId)
-        //{
-        //    bool otherIsTransient = Equals(otherId, default(TId));
-        //    bool thisIsTransient = Equals(thisId, default(TId));
-
-        //    return otherIsTransient && thisIsTransient;
-        //}
     }
 }
