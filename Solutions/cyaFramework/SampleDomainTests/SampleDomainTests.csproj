@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4482A6D2-9514-40E4-9E61-BD8D38187738}</ProjectGuid>
+    <ProjectGuid>{8CD90620-184B-47B9-86C2-515F58092569}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntityFrameworkSampleTests</RootNamespace>
-    <AssemblyName>EntityFrameworkSampleTests</AssemblyName>
+    <RootNamespace>SampleDomainTests</RootNamespace>
+    <AssemblyName>SampleDomainTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,17 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="NSubstitute">
       <HintPath>..\packages\NSubstitute.1.8.1.0\lib\net45\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -60,8 +53,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Extensions\DbContextExtensions.cs" />
-    <Compile Include="Repositories\PersonRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,18 +60,16 @@
       <Project>{ed592aa3-33fd-4285-8f00-6b239f679657}</Project>
       <Name>cyaFramework.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EntityFrameworkSample\EntityFrameworkSample.csproj">
-      <Project>{a76ae261-f9c3-4492-b73d-e5d154e3efa5}</Project>
-      <Name>EntityFrameworkSample</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SampleDomain\SampleDomain.csproj">
       <Project>{a5b82831-8733-4052-9d62-f3d4d952763b}</Project>
       <Name>SampleDomain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
