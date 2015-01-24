@@ -73,11 +73,13 @@ namespace EntityFrameworkSample.Repositories
             }
 
             _dbContext.SaveChanges();
+
+            return model;
         }
 
         public virtual bool Delete(T model)
         {
-            return Delete(model.ID);
+            return Delete(model.Id);
         }
 
         public virtual bool Delete(TId id)
@@ -93,6 +95,8 @@ namespace EntityFrameworkSample.Repositories
                 //context.Set<TModel>().Remove(model);
                 return _dbContext.SaveChanges() > 0;
             }
+
+            return false;
         }
 
         public void Dispose()
