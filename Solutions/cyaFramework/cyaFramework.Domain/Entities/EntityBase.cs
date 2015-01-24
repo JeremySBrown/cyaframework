@@ -7,7 +7,6 @@ namespace cyaFramework.Domain.Entities
     public abstract class EntityBase<TId> : IEquatable<EntityBase<TId>>, IEntityBase<TId>
     {
         internal TId _id;
-        internal TypeInfo _idTypeInfo;
 
         public virtual TId Id
         {
@@ -58,7 +57,8 @@ namespace cyaFramework.Domain.Entities
 
         public override int GetHashCode()
         {
-            return this.Id.GetHashCode();
+            bool thisIsTransient = Equals(this.Id, default(TId));
+            return thisIsTransient ? 0 : this.Id.GetHashCode();
         }
 
         public bool Equals(EntityBase<TId> other)
@@ -68,12 +68,28 @@ namespace cyaFramework.Domain.Entities
                 return false;
             }
 
+            // compare two new objects
+            bool otherIsTransient = Equals(other.Id, default(TId));
+            bool thisIsTransient = Equals(this.Id, default(TId));
+            if (otherIsTransient && thisIsTransient)
+            {
+                return true;
+            } 
+            
+            if (thisIsTransient)
+            {
+                return false;
+            }
+
             return this.Id.Equals(other.Id);
         }
 
-        internal TypeInfo GetIdTypeInfo()
-        {
-            return _idTypeInfo ?? (_idTypeInfo = typeof(TId).GetTypeInfo());
-        }
+        //internal bool CompareTransientIds(TId thisId, TId otherId)
+        //{
+        //    bool otherIsTransient = Equals(otherId, default(TId));
+        //    bool thisIsTransient = Equals(thisId, default(TId));
+
+        //    return otherIsTransient && thisIsTransient;
+        //}
     }
 }

@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{66BE0D4A-6228-46BE-9633-4D50635AA6FA}</ProjectGuid>
+    <ProjectGuid>{4482A6D2-9514-40E4-9E61-BD8D38187738}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cyaFramework.Domain.Tests</RootNamespace>
-    <AssemblyName>cyaFramework.Domain.Tests</AssemblyName>
+    <RootNamespace>EntityFrameworkSampleTests</RootNamespace>
+    <AssemblyName>EntityFrameworkSampleTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NSubstitute">
-      <HintPath>..\packages\NSubstitute.1.8.1.0\lib\net45\NSubstitute.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -53,12 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="EntityTests\EntityWithStringIdTests.cs" />
-    <Compile Include="EntityTests\EntityWithGuidIdTests.cs" />
-    <Compile Include="EntityTests\EnityWIthIntIdTests.cs" />
-    <Compile Include="Fakes\EntityWithIdOfGuid.cs" />
-    <Compile Include="Fakes\EntityWithIdOfInt.cs" />
-    <Compile Include="Fakes\EntityWithIdOfString.cs" />
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,12 +58,6 @@
       <Project>{ed592aa3-33fd-4285-8f00-6b239f679657}</Project>
       <Name>cyaFramework.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Stubs\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

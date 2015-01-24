@@ -1,15 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace cyaFramework.Domain.Tests
+namespace EntityFrameworkSampleTests
 {
     [TestClass]
-    public class WhenUsingIModelBase
+    public class UnitTest1
     {
         [TestMethod]
         public void TestMethod1()
         {
-
         }
     }
 }

@@ -7,23 +7,23 @@ namespace cyaFramework.Domain.Tests.EntityTests
 {
     [TestClass]
     [ExcludeFromCodeCoverage]
-    public class EntityWithStringIdTests
+    public class EnityWIthIntIdTests
     {
         [TestMethod]
         public void IsNew_ForNewInstance_ReturnsTrue()
         {
-            var entity = new EntityWithIdOfString() ;
+            var entity = new EntityWithIdOfInt();
 
-            Assert.IsNull(entity.Id);
+            Assert.AreEqual(0, entity.Id);
             Assert.IsTrue(entity.IsNew());
         }
 
         [TestMethod]
         public void IsNew_WithNonDefaultValues_ReturnFalse()
         {
-            var entity = new EntityWithIdOfString
+            var entity = new EntityWithIdOfInt
             {
-                Id = "12345"
+                Id = 1
             };
 
             Assert.IsFalse(entity.IsNew());
@@ -33,43 +33,29 @@ namespace cyaFramework.Domain.Tests.EntityTests
         [ExpectedException(typeof(ArgumentException))]
         public void Id_ResetToDefaultValue_ThrowsException()
         {
-            var entity = new EntityWithIdOfString
+            var entity = new EntityWithIdOfInt
             {
-                Id = "12345"
+                Id = 1
             };
 
-            entity.Id = null;
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void Id_ResetToEmptyString_ThrowsException()
-        {
-            var entity = new EntityWithIdOfString
-            {
-                Id = "12345"
-            };
-
-            entity.Id = string.Empty;
+            entity.Id = 0;
+            Assert.Inconclusive();
         }
 
         [TestMethod]
         public void TwoNewInstances_ShouldBeEqual()
         {
-            var entity1 = new EntityWithIdOfString();
-            var entity2 = new EntityWithIdOfString();
+            var entity1 = new EntityWithIdOfInt();
+            var entity2 = new EntityWithIdOfInt();
 
             Assert.IsTrue(Equals(entity1, entity2));
-            Assert.IsTrue(entity2.Equals(entity1));
-            Assert.AreEqual(entity1.GetHashCode(), entity2.GetHashCode());
         }
 
         [TestMethod]
         public void TwoInstances_WithSameId_ShouldBeEqual()
         {
-            string id = "123456_ABC";
-            var entity1 = new EntityWithIdOfString { Id = id };
-            var entity2 = new EntityWithIdOfString { Id = id };
+            var entity1 = new EntityWithIdOfInt { Id = 1 };
+            var entity2 = new EntityWithIdOfInt { Id = 1 };
 
             Assert.IsTrue(Equals(entity1, entity2));
             Assert.IsTrue(entity2.Equals(entity1));
@@ -79,8 +65,8 @@ namespace cyaFramework.Domain.Tests.EntityTests
         [TestMethod]
         public void TwoInstances_WithDifferentIds_Should_NOT_BeEqual()
         {
-            var entity1 = new EntityWithIdOfString { Id = "12345" };
-            var entity2 = new EntityWithIdOfString { Id = "ABCDE" };
+            var entity1 = new EntityWithIdOfInt { Id = 1 };
+            var entity2 = new EntityWithIdOfInt { Id = 2 };
 
             Assert.IsFalse(Equals(entity1, entity2));
             Assert.IsFalse(entity2.Equals(entity1));
@@ -90,8 +76,8 @@ namespace cyaFramework.Domain.Tests.EntityTests
         [TestMethod]
         public void NonNullInstance_ComparedWillNullInstanse_IsFalse()
         {
-            EntityWithIdOfString entity1 = new EntityWithIdOfString { Id = "12345" };
-            EntityWithIdOfString entity2 = null;
+            EntityWithIdOfInt entity1 = new EntityWithIdOfInt { Id =1 };
+            EntityWithIdOfInt entity2 = null;
 
             Assert.IsFalse(entity1.Equals(entity2));
         }
@@ -99,7 +85,7 @@ namespace cyaFramework.Domain.Tests.EntityTests
         [TestMethod]
         public void NonNullInstance_ComparedWillObject_IsFalse()
         {
-            EntityWithIdOfString entity1 = new EntityWithIdOfString { Id = "12345" };
+            EntityWithIdOfInt entity1 = new EntityWithIdOfInt { Id = 1 };
             object entity2 = null;
 
             Assert.IsFalse(entity1.Equals(entity2));
@@ -108,10 +94,11 @@ namespace cyaFramework.Domain.Tests.EntityTests
         [TestMethod]
         public void Compare_InstanceWithTransientID_With_InstanceWithNonTransientID_AreNotEqual()
         {
-            var entity1 = new EntityWithIdOfString();
-            var entity2 = new EntityWithIdOfString { Id = "12345" };
+            var entity1 = new EntityWithIdOfInt();
+            var entity2 = new EntityWithIdOfInt { Id = 1 };
 
             Assert.IsFalse(entity1.Equals(entity2));
         }
+
     }
 }

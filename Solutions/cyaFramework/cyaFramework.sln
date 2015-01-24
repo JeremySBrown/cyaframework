@@ -1,15 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cyaFramework.Domain", "cyaFramework.Domain\cyaFramework.Domain.csproj", "{ED592AA3-33FD-4285-8F00-6B239F679657}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{625DF1C6-A6A5-48EC-A64D-1DEAE0631C07}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{913E53EE-F640-456E-A126-5B28DB689E2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cyaFramework.Domain.Tests", "cyaFramework.Domain.Tests\cyaFramework.Domain.Tests.csproj", "{66BE0D4A-6228-46BE-9633-4D50635AA6FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{743DA14D-E8A7-44BE-9D4C-8CF0086A318E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkSample", "EntityFrameworkSample\EntityFrameworkSample.csproj", "{A76AE261-F9C3-4492-B73D-E5D154E3EFA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkSampleTests", "EntityFrameworkSampleTests\EntityFrameworkSampleTests.csproj", "{4482A6D2-9514-40E4-9E61-BD8D38187738}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,12 +29,22 @@ Global
 		{66BE0D4A-6228-46BE-9633-4D50635AA6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66BE0D4A-6228-46BE-9633-4D50635AA6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66BE0D4A-6228-46BE-9633-4D50635AA6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A76AE261-F9C3-4492-B73D-E5D154E3EFA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A76AE261-F9C3-4492-B73D-E5D154E3EFA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A76AE261-F9C3-4492-B73D-E5D154E3EFA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A76AE261-F9C3-4492-B73D-E5D154E3EFA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4482A6D2-9514-40E4-9E61-BD8D38187738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4482A6D2-9514-40E4-9E61-BD8D38187738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4482A6D2-9514-40E4-9E61-BD8D38187738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4482A6D2-9514-40E4-9E61-BD8D38187738}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ED592AA3-33FD-4285-8F00-6B239F679657} = {913E53EE-F640-456E-A126-5B28DB689E2B}
-		{66BE0D4A-6228-46BE-9633-4D50635AA6FA} = {625DF1C6-A6A5-48EC-A64D-1DEAE0631C07}
+		{66BE0D4A-6228-46BE-9633-4D50635AA6FA} = {913E53EE-F640-456E-A126-5B28DB689E2B}
+		{A76AE261-F9C3-4492-B73D-E5D154E3EFA5} = {743DA14D-E8A7-44BE-9D4C-8CF0086A318E}
+		{4482A6D2-9514-40E4-9E61-BD8D38187738} = {743DA14D-E8A7-44BE-9D4C-8CF0086A318E}
 	EndGlobalSection
 EndGlobal
