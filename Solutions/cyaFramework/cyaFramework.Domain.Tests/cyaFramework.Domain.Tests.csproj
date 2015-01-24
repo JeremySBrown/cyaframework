@@ -53,7 +53,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="EntityTests\EntityGenericIdTests.cs" />
+    <Compile Include="EntityTests\EntityWithStringIdTests.cs" />
+    <Compile Include="EntityTests\EntityWithGuidIdTests.cs" />
+    <Compile Include="EntityTests\EnityWIthIntIdTests.cs" />
     <Compile Include="Fakes\EntityWithIdOfGuid.cs" />
     <Compile Include="Fakes\EntityWithIdOfInt.cs" />
     <Compile Include="Fakes\EntityWithIdOfString.cs" />

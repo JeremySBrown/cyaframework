@@ -7,51 +7,53 @@ namespace cyaFramework.Domain.Entities
     public abstract class EntityBase<TId> : IEquatable<EntityBase<TId>>, IEntityBase<TId>
     {
         internal TId _id;
+        internal TypeInfo _idTypeInfo;
 
         public virtual TId Id
         {
             get { return _id; }
             set
             {
-                string msg = "Entity Id cannot be set to default value. Only during contruction.";
-                var typeInfo = typeof(TId).GetTypeInfo();
-                if (typeInfo.IsValueType
-                    && value.Equals(default(TId)))
+                string msg = "Entity Id cannot be set to default value once it has been set to a non-default value.";
+                if (Equals(value, default(TId))
+                    && !IsNew())
                 {
-                    throw new InvalidOperationException(msg);
-                }
-                if (typeInfo.IsClass && value == null)
-                {
-                    throw new InvalidOperationException(msg);
-                }
-                if (typeInfo.IsClass && value != null && value.ToString() == string.Empty)
-                {
-                    throw new InvalidOperationException(msg);
+                    throw new ArgumentException(msg);
                 }
 
+                if (Equals(value, string.Empty)
+                    && !IsNew())
+                {
+                    throw new ArgumentException(msg);
+                }
+                
+                
                 _id = value;
             }
         }
 
         public virtual bool IsNew()
         {
-            var typeInfo = typeof(TId).GetTypeInfo();
-            if (typeInfo.IsValueType)
-            {
-                return this.Id.Equals(default(TId));
-            }
-            return this.Id == null || this.Id.Equals(default(TId));
+            return Equals(this.Id, default(TId));
         }
-
+        
         public override bool Equals(object otherObject)
         {
-            var entity = otherObject as EntityBase<TId>;
-            if (entity != null)
+            var otherEntity = otherObject as EntityBase<TId>;
+            if (otherEntity == null)
             {
-                return this.Equals(entity);
+                return false;
             }
 
-            return base.Equals(otherObject);
+            // compare two new objects
+            bool otherIsTransient = Equals(otherEntity.Id, default(TId));
+            bool thisIsTransient = Equals(this.Id, default(TId));
+            if (otherIsTransient && thisIsTransient)
+            {
+                return true;
+            }
+
+            return otherEntity.Id.Equals(this.Id);
         }
 
         public override int GetHashCode()
@@ -67,6 +69,11 @@ namespace cyaFramework.Domain.Entities
             }
 
             return this.Id.Equals(other.Id);
+        }
+
+        internal TypeInfo GetIdTypeInfo()
+        {
+            return _idTypeInfo ?? (_idTypeInfo = typeof(TId).GetTypeInfo());
         }
     }
 }
