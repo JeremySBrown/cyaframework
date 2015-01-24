@@ -61,7 +61,7 @@ namespace cyaFramework.Domain.Entities
             return thisIsTransient ? 0 : this.Id.GetHashCode();
         }
 
-        public bool Equals(EntityBase<TId> other)
+        public virtual bool Equals(EntityBase<TId> other)
         {
             if (other == null)
             {
