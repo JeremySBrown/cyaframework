@@ -66,7 +66,7 @@ namespace EntityFrameworkSample.Repositories
 
         public virtual T Save(T model)
         {
-            _dbContext.Set<T>().Add(model);
+            model = _dbContext.Set<T>().Add(model);
             foreach (var entry in _dbContext.ChangeTracker.Entries<IEntityBase<TId>>())
             {
                 entry.State = entry.Entity.IsNew() ? EntityState.Added : EntityState.Modified;
@@ -92,7 +92,7 @@ namespace EntityFrameworkSample.Repositories
                 {
                     entry.State = EntityState.Deleted;
                 }
-                //context.Set<TModel>().Remove(model);
+                _dbContext.Set<T>().Remove(model);
                 return _dbContext.SaveChanges() > 0;
             }
 
