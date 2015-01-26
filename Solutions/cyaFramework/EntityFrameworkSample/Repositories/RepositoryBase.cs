@@ -32,6 +32,18 @@ namespace EntityFrameworkSample.Repositories
             return query.Where(filter).FirstOrDefault();
         }
 
+        public IQueryable<T> All
+        {
+            get { return _dbContext.Set<T>(); }
+            
+        }
+
+        public IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _dbContext.Set<T>();
+            return includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+        }
+
         public virtual IList<T> FindAll(params string[] includePaths)
         {
             return FindAll(null, null, includePaths);

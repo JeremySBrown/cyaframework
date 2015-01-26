@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using cyaFramework.Domain.Contracts.Entities;
 
@@ -11,6 +12,10 @@ namespace cyaFramework.Domain.Contracts.Repositories
         T Find(TId id, params string[] includePaths);
         T Find(Expression<Func<T, bool>> filter, params string[] includePaths);
 
+        IQueryable<T> All { get; }
+
+        IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
+        
         IList<T> FindAll(params string[] includePaths);
 
         IList<T> FindAll(string orderBy, params string[] includePaths);
